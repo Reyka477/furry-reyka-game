@@ -9,7 +9,7 @@ namespace MyGame
         public Monster monster;
         public Character hero;
 
-        public void StartBattle()
+        public void StartBattle() // Атака
         {
             monster.GetDamage(hero.attack);
             hero.GetDamage(monster.attack);

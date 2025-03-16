@@ -13,10 +13,12 @@ public class Character : MonoBehaviour
     public double critDamage = 1.5;
     public int attackDistance;
     public HealthBar healthBar;
+    public AttackSpeedBar attackSpeedBar;
 
     public void Awake()
     {
         currentHp = maxHealth;
+        attackSpeedBar.SetAttackSpeed(attackSpeed);
         healthBar.SetMaxHealth(maxHealth);
     }
 

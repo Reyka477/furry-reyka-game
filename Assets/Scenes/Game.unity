@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 55132853}
   - component: {fileID: 55132855}
   - component: {fileID: 55132854}
+  - component: {fileID: 55132856}
   m_Layer: 5
   m_Name: attack_speed_bar
   m_TagString: Untagged
@@ -403,10 +404,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -652590647, guid: ffc98aae5d225174e842e06e9a2a2fa9, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -420,6 +421,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55132852}
   m_CullTransparentMesh: 1
+--- !u!114 &55132856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55132852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8313d6e9c3f05a44e86f206c6058d787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillImage: {fileID: 55132854}
 --- !u!1 &57371629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,11 +1304,12 @@ MonoBehaviour:
   currentHp: 0
   def: 5
   attack: 10
-  attackSpeed: 1
+  attackSpeed: 0.3
   critChance: 20
   critDamage: 1.5
   attackDistance: 0
   healthBar: {fileID: 2016922772}
+  attackSpeedBar: {fileID: 55132856}
 --- !u!1 &418823232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3617,11 +3632,12 @@ MonoBehaviour:
   maxHealth: 100
   currentHp: 0
   def: 5
-  attack: 2
-  attackSpeed: 1
+  attack: 0
+  attackSpeed: 0.5
   critChance: 20
   critDamage: 1.5
   healthBar: {fileID: 2151455}
+  attackSpeedBar: {fileID: 1965010693}
 --- !u!1 &1941218511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3807,6 +3823,7 @@ GameObject:
   - component: {fileID: 1965010690}
   - component: {fileID: 1965010692}
   - component: {fileID: 1965010691}
+  - component: {fileID: 1965010693}
   m_Layer: 5
   m_Name: attack_speed_bar
   m_TagString: Untagged
@@ -3854,10 +3871,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -652590647, guid: ffc98aae5d225174e842e06e9a2a2fa9, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -3871,6 +3888,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965010689}
   m_CullTransparentMesh: 1
+--- !u!114 &1965010693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965010689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8313d6e9c3f05a44e86f206c6058d787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillImage: {fileID: 1965010691}
 --- !u!1 &1974343054
 GameObject:
   m_ObjectHideFlags: 0

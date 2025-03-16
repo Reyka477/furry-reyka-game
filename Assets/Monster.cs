@@ -9,15 +9,17 @@ public class Monster : MonoBehaviour
     public int currentHp;
     public int def = 5;
     public int attack = 2;
-    public int attackSpeed = 1;
+    public float attackSpeed = 1f;
     public int critChance = 20;
     public double critDamage = 1.5; //сила крита %
     public Dictionary<int, int> Drop;
     public HealthBar healthBar;
+    public AttackSpeedBar attackSpeedBar;
 
     public void Awake()
     {
         currentHp = maxHealth;
+        attackSpeedBar.SetAttackSpeed(attackSpeed);
         healthBar.SetMaxHealth(maxHealth);
     }
 

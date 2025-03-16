@@ -15,6 +15,7 @@ public class StartBattle : MonoBehaviour
     public Image buttonImage;
     public BattleManager battleManager;
 
+
     public void Start()
     {
         // Навешиваем функцию при клике на battleButton

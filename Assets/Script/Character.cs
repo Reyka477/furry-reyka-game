@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
         characterName = newName;
     }
 
-    public void Attack()
+    public void DamageCalculation()
     {
     }
 

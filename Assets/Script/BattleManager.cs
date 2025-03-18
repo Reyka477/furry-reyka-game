@@ -31,6 +31,7 @@ public class BattleManager : MonoBehaviour
         // Проверяем, умер ли монстр
         if (monster.currentHp <= 0)
         {
+            StopBattle();
             monster.Die();
         }
     }
@@ -47,5 +48,10 @@ public class BattleManager : MonoBehaviour
         {
             hero.Die();
         }
+    }
+
+    public void MonsterRespawn()
+    {
+        // С задержкой в 3 секунды делаем монстру максимальное хп, начинаем бой заново
     }
 }

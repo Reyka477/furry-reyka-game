@@ -36,5 +36,9 @@ public class AttackSpeedBar : MonoBehaviour
                 onAttack?.Invoke();
             }
         }
+        else
+        {
+            fillImage.fillAmount = 1;
+        }
     }
 }

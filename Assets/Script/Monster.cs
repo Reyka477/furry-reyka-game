@@ -15,12 +15,16 @@ public class Monster : MonoBehaviour
     public Dictionary<int, int> Drop;
     public HealthBar healthBar;
     public AttackSpeedBar attackSpeedBar;
+    public SpriteRenderer spriteRenderer; // Ссылка на спрайт монстра
+
+    private Color originalColor; // Исходный цвет спрайта
 
     public void Awake()
     {
         currentHp = maxHealth;
         attackSpeedBar.SetAttackSpeed(attackSpeed);
         healthBar.SetMaxHealth(maxHealth);
+        originalColor = spriteRenderer.color; // Сохраняем оригинальный цвет
     }
 
     public void Attack()
@@ -40,7 +44,7 @@ public class Monster : MonoBehaviour
 
         if (this.currentHp <= 0)
         {
-            this.Die();
+            currentHp = 0;
         }
 
         healthBar.SetHealth(currentHp);
@@ -48,7 +52,15 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
+        // Делаем спрайт серым
+        spriteRenderer.color = Color.gray;
+
+        // Возвращаем спрайт в нормальное состояние
+        spriteRenderer.color = originalColor;
+
+        // Восстанавливаем здоровье и обновляем UI
         currentHp = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currentHp);
+        // Возобновить бой
     }
 }

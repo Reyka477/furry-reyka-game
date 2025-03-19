@@ -26,7 +26,7 @@ public class BattleManager : MonoBehaviour
     {
         if (monster.currentHp > 0)
         {
-            monster.GetDamage(hero.attack);
+            monster.GetDamage(hero.DamageCalculation());
         }
 
         // Проверяем, умер ли монстр
@@ -42,7 +42,7 @@ public class BattleManager : MonoBehaviour
     {
         if (hero.currentHp > 0)
         {
-            hero.GetDamage(monster.attack);
+            hero.GetDamage(monster.DamageCalculation());
         }
 
         // Проверяем, умер ли герой

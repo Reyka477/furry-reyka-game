@@ -9,6 +9,7 @@ public class AttackSpeedBar : MonoBehaviour
     public float attackPreparationTime; // Время подготовки атаки
     public Action onAttack;
     public bool isFighting = false;
+    public bool isAlive = true;
 
     // Устанавливаем скорость атаки (чем больше attackSpeed, тем быстрее перезарядка)
     public void SetAttackSpeed(float attackSpeed)
@@ -19,6 +20,12 @@ public class AttackSpeedBar : MonoBehaviour
 
     private void Update()
     {
+        if (!isAlive)
+        {
+            fillImage.fillAmount = 0;
+            return;
+        }
+
         if (isFighting)
         {
             // Увеличиваем время подготовки атаки

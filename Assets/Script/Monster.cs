@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class Monster : MonoBehaviour
     public Dictionary<int, int> Drop;
     public HealthBar healthBar;
     public AttackSpeedBar attackSpeedBar;
-    public SpriteRenderer spriteRenderer; // Ссылка на спрайт монстра
+    public Image spriteRenderer; // Ссылка на спрайт монстра
 
-    private Color originalColor; // Исходный цвет спрайта
+    public Color originalColor; // Исходный цвет спрайта
 
     public void Awake()
     {
@@ -52,15 +53,12 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
+        // Переключаем полоску на режим "умер" чтоб обнулить её
+        attackSpeedBar.isAlive = false;
+
         // Делаем спрайт серым
-        spriteRenderer.color = Color.gray;
+        spriteRenderer.color = new Color(0.28f, 0.28f, 0.28f, 1f);
 
-        // Возвращаем спрайт в нормальное состояние
-        spriteRenderer.color = originalColor;
-
-        // Восстанавливаем здоровье и обновляем UI
-        currentHp = maxHealth;
-        healthBar.SetHealth(currentHp);
-        // Возобновить бой
+        // Выдаем лут
     }
 }

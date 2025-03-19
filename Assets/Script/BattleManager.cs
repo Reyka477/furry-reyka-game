@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BattleManager : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class BattleManager : MonoBehaviour
     public void StartBattle()
     {
         // Подписываемся на события атаки персонажа и монстра
-        hero.attackSpeedBar.onAttack += HeroAttack;
-        monster.attackSpeedBar.onAttack += MonsterAttack;
+        hero.attackSpeedBar.onAttack = HeroAttack;
+        monster.attackSpeedBar.onAttack = MonsterAttack;
         // Запускаем AttackSpeedBar
         hero.attackSpeedBar.isFighting = true;
         monster.attackSpeedBar.isFighting = true;
@@ -33,6 +34,7 @@ public class BattleManager : MonoBehaviour
         {
             StopBattle();
             monster.Die();
+            StartCoroutine(MonsterRespawn());
         }
     }
 
@@ -50,8 +52,20 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void MonsterRespawn()
+    public IEnumerator MonsterRespawn()
     {
-        // С задержкой в 3 секунды делаем монстру максимальное хп, начинаем бой заново
+        // Ждем 3 секунды
+        yield return new WaitForSeconds(3f);
+
+        // Возвращаем спрайт в нормальное состояние
+        monster.spriteRenderer.color = monster.originalColor;
+
+        // Восстанавливаем здоровье и обновляем UI
+        monster.currentHp = monster.maxHealth;
+        monster.healthBar.SetHealth(monster.currentHp);
+        monster.attackSpeedBar.isAlive = true;
+
+        // Начинаем бой заново
+        StartBattle();
     }
 }

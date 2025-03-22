@@ -1,38 +1,44 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class StartBattle : MonoBehaviour
+namespace Script
 {
-    public Button battleButton;
-    public TMP_Text buttonText;
-    private bool _isStarted = false;
-    public Sprite startSprite;
-    public Sprite stopSprite;
-    public Image buttonImage;
-    public BattleManager battleManager;
-
-
-    public void Start()
+    public class StartBattle : MonoBehaviour
     {
-        // Навешиваем функцию при клике на battleButton
-        battleButton.onClick.AddListener(ToggleButton);
-    }
+        public Button battleButton;
+        public TMP_Text buttonText;
+        private bool _isStarted = false;
+        public Sprite startSprite;
+        public Sprite stopSprite;
+        public Image buttonImage;
+        public BattleManager battleManager;
 
-    void ToggleButton()
-    {
-        _isStarted = !_isStarted;
-        if (_isStarted)
+
+        public void Start()
         {
-            buttonText.text = "Stop";
-            buttonImage.sprite = stopSprite;
-            battleManager.StartBattle();
+            // Навешиваем функцию при клике на battleButton
+            battleButton.onClick.AddListener(ToggleButton);
         }
-        else
+
+        void ToggleButton()
         {
-            buttonText.text = "Start";
-            buttonImage.sprite = startSprite;
-            battleManager.StopBattle();
+            _isStarted = !_isStarted;
+            if (battleManager.hero != null)
+            {
+                if (_isStarted)
+                {
+                    buttonText.text = "Stop";
+                    buttonImage.sprite = stopSprite;
+                    battleManager.StartBattle();
+                }
+                else
+                {
+                    buttonText.text = "Start";
+                    buttonImage.sprite = startSprite;
+                    battleManager.StopBattle();
+                }
+            }
         }
     }
 }

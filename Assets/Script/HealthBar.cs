@@ -1,26 +1,34 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
-public class HealthBar : MonoBehaviour
+namespace Script
 {
-    public Image fillImage;
-    public TMP_Text healthText;
-    public int maxHealth;
-
-    public void SetMaxHealth(int health)
+    public class HealthBar : MonoBehaviour
     {
-        maxHealth = health;
-        SetHealth(health); // Обновляем текущее HP, чтобы полоска была полной
-    }
+        public Image fillImage;
+        public TMP_Text healthText;
+        public int maxHealth;
+        public TMP_Text monsterName;
 
-    // Обновляем текущее здоровье
-    public void SetHealth(int health)
-    {
-        fillImage.fillAmount = (float)health / maxHealth; // Вычисляем процент заполнения
-        healthText.text = $"{health} / {maxHealth}"; // Обновляем текст с текущим и максимальным здоровьем
+        public void SetMaxHealth(int health)
+        {
+            maxHealth = health;
+            SetHealth(health); // Обновляем текущее HP, чтобы полоска была полной
+        }
 
-        // TODO чтобы над полоской здоровья всплывал серый текст с значением полученого урона
+        public void SetMonsterName(string name)
+        {
+            this.monsterName.text = name;
+        }
+
+        // Обновляем текущее здоровье
+        public void SetHealth(int health)
+        {
+            fillImage.fillAmount = (float)health / maxHealth; // Вычисляем процент заполнения
+            healthText.text = $"{health} / {maxHealth}"; // Обновляем текст с текущим и максимальным здоровьем
+
+            // TODO чтобы над полоской здоровья всплывал серый текст с значением полученого урона
+        }
     }
 }

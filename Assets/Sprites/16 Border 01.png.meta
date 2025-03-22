@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: caa094bc8ec977b4b89eed8805addb80
+guid: ec2f3df6690d4d347a85aa01753ea447
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 8-bits-characters-gaming-assets (1)_0
+      name: 16 Border 01_0
       rect:
         serializedVersion: 2
-        x: 2761
-        y: 66
-        width: 2518
-        height: 2555
+        x: 193
+        y: 1
+        width: 62
+        height: 62
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00b69d46c9af3e440beb64e011e1b88b
-      internalID: -114916163
+      spriteID: 1e0d6dbbd1303be4cb220b9fee2b2005
+      internalID: -1897154318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 8-bits-characters-gaming-assets (1)_1
+      name: 16 Border 01_1
       rect:
         serializedVersion: 2
-        x: 589
-        y: 3131
-        width: 1600
-        height: 2000
+        x: 65
+        y: 1
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87be764fc71f58b4fb4355fff6b87a6c
+      internalID: -867528896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16 Border 01_2
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 65
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04519a876398ba24887a288eb9f77a13
+      internalID: -1717059227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16 Border 01_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 65
+        width: 62
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55e67cfceb0be3b4299440dafd4a4bdd
-      internalID: -2121179486
+      spriteID: da4ad301d4c298a40bd65b47c6884562
+      internalID: -2050160680
       vertices: []
       indices: 
       edges: []
@@ -188,8 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      8-bits-characters-gaming-assets (1)_0: -114916163
-      8-bits-characters-gaming-assets (1)_1: -2121179486
+      16 Border 01_0: -1897154318
+      16 Border 01_1: -867528896
+      16 Border 01_2: -1717059227
+      16 Border 01_3: -2050160680
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

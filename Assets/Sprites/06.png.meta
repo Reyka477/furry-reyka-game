@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: caa094bc8ec977b4b89eed8805addb80
+guid: 65090f22d951202419bd93b31a12bb30
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -134,49 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: 8-bits-characters-gaming-assets (1)_0
-      rect:
-        serializedVersion: 2
-        x: 2761
-        y: 66
-        width: 2518
-        height: 2555
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00b69d46c9af3e440beb64e011e1b88b
-      internalID: -114916163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 8-bits-characters-gaming-assets (1)_1
-      rect:
-        serializedVersion: 2
-        x: 589
-        y: 3131
-        width: 1600
-        height: 2000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55e67cfceb0be3b4299440dafd4a4bdd
-      internalID: -2121179486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -187,9 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      8-bits-characters-gaming-assets (1)_0: -114916163
-      8-bits-characters-gaming-assets (1)_1: -2121179486
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

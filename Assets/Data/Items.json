@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Sword of Destiny",
+    "rarity": "Rare"
+  },
+  {
+    "id": 2,
+    "name": "Health Potion",
+    "rarity": "Common"
+  },
+  {
+    "id": 3,
+    "name": "Legendary Shield",
+    "rarity": "Epic",
+  },
+  {
+    "id": 4,
+    "name": "Legendary Huinya",
+    "rarity": "Epic",
+  }
+]

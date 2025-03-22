@@ -1,71 +1,74 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+namespace Script
 {
-    public Character hero; // Ссылка на героя
-    public Monster monster; // Ссылка на монстра
-
-    public void StartBattle()
+    public class BattleManager : MonoBehaviour
     {
-        // Подписываемся на события атаки персонажа и монстра
-        hero.attackSpeedBar.onAttack = HeroAttack;
-        monster.attackSpeedBar.onAttack = MonsterAttack;
-        // Запускаем AttackSpeedBar
-        hero.attackSpeedBar.isFighting = true;
-        monster.attackSpeedBar.isFighting = true;
-    }
+        public Character hero; // Ссылка на героя
+        public Monster monster; // Ссылка на монстра
 
-    public void StopBattle()
-    {
-        hero.attackSpeedBar.isFighting = false;
-        monster.attackSpeedBar.isFighting = false;
-    }
-
-    private void HeroAttack()
-    {
-        if (monster.currentHp > 0)
+        public void StartBattle()
         {
-            monster.GetDamage(hero.DamageCalculation());
+            // Подписываемся на события атаки персонажа и монстра
+            hero.attackSpeedBar.onAttack = HeroAttack;
+            monster.attackSpeedBar.onAttack = MonsterAttack;
+            // Запускаем AttackSpeedBar
+            hero.attackSpeedBar.isFighting = true;
+            monster.attackSpeedBar.isFighting = true;
         }
 
-        // Проверяем, умер ли монстр
-        if (monster.currentHp <= 0)
+        public void StopBattle()
         {
-            StopBattle();
-            monster.Die();
-            StartCoroutine(MonsterRespawn());
-        }
-    }
-
-    private void MonsterAttack()
-    {
-        if (hero.currentHp > 0)
-        {
-            hero.GetDamage(monster.DamageCalculation());
+            hero.attackSpeedBar.isFighting = false;
+            monster.attackSpeedBar.isFighting = false;
         }
 
-        // Проверяем, умер ли герой
-        if (hero.currentHp <= 0)
+        private void HeroAttack()
         {
-            hero.Die();
+            if (monster.currentHp > 0)
+            {
+                monster.GetDamage(hero.DamageCalculation());
+            }
+
+            // Проверяем, умер ли монстр
+            if (monster.currentHp <= 0)
+            {
+                StopBattle();
+                monster.Die();
+                StartCoroutine(MonsterRespawn());
+            }
         }
-    }
 
-    public IEnumerator MonsterRespawn()
-    {
-        // Ждем 3 секунды
-        yield return new WaitForSeconds(3f);
+        private void MonsterAttack()
+        {
+            if (hero.currentHp > 0)
+            {
+                hero.GetDamage(monster.DamageCalculation());
+            }
 
-        // Возвращаем спрайт в нормальное состояние
-        monster.spriteRenderer.color = monster.originalColor;
+            // Проверяем, умер ли герой
+            if (hero.currentHp <= 0)
+            {
+                hero.Die();
+            }
+        }
 
-        // Восстанавливаем здоровье и обновляем UI
-        monster.currentHp = monster.maxHealth;
-        monster.healthBar.SetHealth(monster.currentHp);
-        monster.attackSpeedBar.isAlive = true;
+        public IEnumerator MonsterRespawn()
+        {
+            // Ждем 3 секунды
+            yield return new WaitForSeconds(3f);
 
-        // Начинаем бой заново
-        StartBattle();
+            // Возвращаем спрайт в нормальное состояние
+            monster.spriteRenderer.color = monster.originalColor;
+
+            // Восстанавливаем здоровье и обновляем UI
+            monster.currentHp = monster.maxHealth;
+            monster.healthBar.SetHealth(monster.currentHp);
+            monster.attackSpeedBar.isAlive = true;
+
+            // Начинаем бой заново
+            StartBattle();
+        }
     }
 }

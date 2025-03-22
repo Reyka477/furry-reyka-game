@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: caa094bc8ec977b4b89eed8805addb80
+guid: c609b95e15bd6de4b9cb5b72b93e4982
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 8-bits-characters-gaming-assets (1)_0
+      name: 04 Border 01_0
       rect:
         serializedVersion: 2
-        x: 2761
-        y: 66
-        width: 2518
-        height: 2555
+        x: 65
+        y: 1
+        width: 62
+        height: 62
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00b69d46c9af3e440beb64e011e1b88b
-      internalID: -114916163
+      spriteID: 1f0a0dfd80c796343b6095e0cd4aed51
+      internalID: 1044534982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 8-bits-characters-gaming-assets (1)_1
+      name: 04 Border 01_1
       rect:
         serializedVersion: 2
-        x: 589
-        y: 3131
-        width: 1600
-        height: 2000
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dfc63df72d06a643a0cddcac9c99a1f
+      internalID: 1409668308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04 Border 01_2
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 65
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082d18618f32ea44aafb57da316c2f79
+      internalID: 491867161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04 Border 01_3
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 65
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f284175c13cc5504c8c90d8dadf894e4
+      internalID: 767339572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04 Border 01_4
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 1
+        width: 62
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +234,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55e67cfceb0be3b4299440dafd4a4bdd
-      internalID: -2121179486
+      spriteID: f5d21ffe75110e64194296a66524c37d
+      internalID: 2115767479
       vertices: []
       indices: 
       edges: []
@@ -188,8 +251,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      8-bits-characters-gaming-assets (1)_0: -114916163
-      8-bits-characters-gaming-assets (1)_1: -2121179486
+      04 Border 01_0: 1044534982
+      04 Border 01_1: 1409668308
+      04 Border 01_2: 491867161
+      04 Border 01_3: 767339572
+      04 Border 01_4: 2115767479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

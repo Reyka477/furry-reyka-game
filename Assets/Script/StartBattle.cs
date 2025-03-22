@@ -37,6 +37,7 @@ namespace Script
                     buttonText.text = "Start";
                     buttonImage.sprite = startSprite;
                     battleManager.StopBattle();
+                    battleManager.StopBattle();
                 }
             }
         }

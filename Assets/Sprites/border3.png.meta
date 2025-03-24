@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68cc1b139bc3c2e4aab6d08969fc874b
+guid: 0ded198c85f6fe94298c80fcdd47cc8c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 302, z: 0, w: 319}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: battle_arena_0
+      name: border3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 271
+        y: 303
         width: 1024
-        height: 452
+        height: 405
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,8 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec5773d81e2ea6b4d99c42c1204eb193
-      internalID: 1790785340
+      spriteID: 6c085d9ddc52158419a33a6a84a1504a
+      internalID: -426581706
       vertices: []
       indices: 
       edges: []
@@ -160,14 +160,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      battle_arena_0: 1790785340
+      border3_0: -426581706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

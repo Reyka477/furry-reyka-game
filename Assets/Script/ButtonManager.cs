@@ -3,24 +3,71 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    public Button[] buttons; // Массив всех кнопок
-    private Color originalColor; // Оригинальный цвет кнопки
+    public Button[] allButtons; // Массив для всех кнопок
+
+    private Button activeBiomeButton;
+    private Button activeMenuButton;
+
+    private Color originalColor; // Исходный цвет кнопок
+    private float darkeningFactor = 0.6f; // Множитель для затемнения (0 - полная темнота, 1 - без изменений)
+
+    void Start()
+    {
+        // Получаем все кнопки, которые находятся в дочерних объектах этого объекта
+        allButtons = GetComponentsInChildren<Button>();
+
+        if (allButtons.Length > 0)
+            originalColor = allButtons[0].GetComponent<Image>().color;
+
+        // Добавляем обработчики событий для всех кнопок
+        foreach (Button button in allButtons)
+        {
+            button.onClick.AddListener(() => OnButtonClicked(button));
+        }
+    }
 
     public void OnButtonClicked(Button clickedButton)
     {
-        // Пробегаем по всем кнопкам и восстанавливаем их цвет
-        foreach (Button button in buttons)
+        Transform buttonParent = clickedButton.transform.parent; // Получаем родителя кнопки
+
+        Debug.Log($"Кликнута кнопка: {clickedButton.name}, родитель: {buttonParent.name}");
+
+        if (buttonParent != null) // Проверяем, есть ли у кнопки родитель
         {
-            // Если кнопка не та, на которую кликнули, восстанавливаем её цвет
-            if (button != clickedButton)
+            if (buttonParent.name == "BiomesButtons") // Если кнопка из Biomes
             {
-                button.GetComponent<Image>().color = originalColor;
+                // Сбрасываем цвет с предыдущей активной кнопки в Biomes, если она существует
+                if (activeBiomeButton != null && activeBiomeButton != clickedButton)
+                {
+                    activeBiomeButton.GetComponent<Image>().color = originalColor;
+                }
+
+                activeBiomeButton = clickedButton;
+                activeBiomeButton.GetComponent<Image>().color =
+                    DarkenColor(originalColor); // Заменяем цвет на затемненный
+            }
+            else if (buttonParent.name == "MenuButtons") // Если кнопка из Menu
+            {
+                // Сбрасываем цвет с предыдущей активной кнопки в Menu, если она существует
+                if (activeMenuButton != null && activeMenuButton != clickedButton)
+                {
+                    activeMenuButton.GetComponent<Image>().color = originalColor;
+                }
+
+                activeMenuButton = clickedButton;
+                activeMenuButton.GetComponent<Image>().color =
+                    DarkenColor(originalColor); // Заменяем цвет на затемненный
             }
         }
+        else
+        {
+            Debug.LogWarning($"Кнопка {clickedButton.name} не имеет родителя!");
+        }
+    }
 
-        // Затемняем выбранную кнопку (при клике)
-        clickedButton.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f);
-
-        Debug.Log("Кнопка нажата: " + clickedButton.name);
+    // Метод для затемнения цвета
+    private Color DarkenColor(Color color)
+    {
+        return new Color(color.r * darkeningFactor, color.g * darkeningFactor, color.b * darkeningFactor);
     }
 }

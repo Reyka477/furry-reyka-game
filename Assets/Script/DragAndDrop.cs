@@ -34,15 +34,19 @@ public class DragAndDrop : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Slot")) 
+            if (collider.CompareTag("Slot"))
             {
-                // Если найден слот, фиксируем позицию в слоте и выходим из метода
+                // Делаем слот новым родителем
+                transform.SetParent(collider.transform);
+
+                // Перемещаем в центр слота
                 transform.position = collider.transform.position;
+
                 return;
             }
         }
 
-        // Если слота нет, возвращаем персонажа на стартовую позицию
+        // Если слот не найден — возвращаем назад
         transform.position = startPosition;
     }
 }

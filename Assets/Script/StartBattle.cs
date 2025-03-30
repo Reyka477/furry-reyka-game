@@ -24,6 +24,7 @@ namespace Script
         void ToggleButton()
         {
             _isStarted = !_isStarted;
+            battleManager.FindHeroInSlots();
             if (battleManager.hero != null)
             {
                 if (_isStarted)
@@ -36,7 +37,6 @@ namespace Script
                 {
                     buttonText.text = "Start";
                     buttonImage.sprite = startSprite;
-                    battleManager.StopBattle();
                     battleManager.StopBattle();
                 }
             }

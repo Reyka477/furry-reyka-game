@@ -9,17 +9,11 @@ namespace Script
         public Image fillImage;
         public TMP_Text healthText;
         public int maxHealth;
-        public TMP_Text monsterName;
 
         public void SetMaxHealth(int health)
         {
             maxHealth = health;
             SetHealth(health); // Обновляем текущее HP, чтобы полоска была полной
-        }
-
-        public void SetMonsterName(string name)
-        {
-            this.monsterName.text = name;
         }
 
         // Обновляем текущее здоровье

@@ -4,12 +4,10 @@ namespace Script
 {
     public class Character : MonoBehaviour
     {
-        [Header("Основные параметры")]
-        public string characterName;
-        public int level = 1;
+        [Header("Основные параметры")] public string characterName;
         public int maxLevel = 100;
-    
-        [Header("Характеристики")]
+
+        [Header("Характеристики")] 
         public int maxHealth = 100;
         public int currentHp;
         public int def = 5;
@@ -18,11 +16,10 @@ namespace Script
         public int critChance = 20;
         public float critDamage = 1.5f;
         public int attackDistance = 1;
-    
-        [Header("UI элементы")]
-        public HealthBar healthBar;
+
+        [Header("UI элементы")] public HealthBar healthBar;
         public AttackSpeedBar attackSpeedBar;
-    
+
 
         public void Awake()
         {
@@ -38,12 +35,12 @@ namespace Script
 
         public void LvlUp()
         {
-        
         }
+
         public int DamageCalculation()
         {
             int damage = 0;
-        
+
             if (Random.Range(0, 100) < critChance)
             {
                 damage = Mathf.RoundToInt(attack * critDamage);
@@ -52,6 +49,7 @@ namespace Script
             {
                 damage = attack;
             }
+
             return damage;
         }
 

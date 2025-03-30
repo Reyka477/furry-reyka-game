@@ -24,6 +24,29 @@ namespace Script
             monster.attackSpeedBar.isFighting = false;
         }
 
+        public void FindHeroInSlots()
+        {
+            // Находим все объекты с тегом "Slot"
+            GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
+
+            foreach (GameObject slot in slots)
+            {
+                // Проверяем, есть ли у слота дочерние объекты
+                foreach (Transform child in slot.transform)
+                {
+                    // Проверяем, есть ли у дочернего объекта тег "Hero"
+                    if (child.CompareTag("Hero"))
+                    {
+                        hero = child.GetComponent<Character>();
+                        Debug.Log("Герой найден и установлен: " + hero.name);
+                        return;
+                    }
+                }
+            }
+
+            Debug.LogWarning("Герой в слотах не найден!");
+        }
+
         private void HeroAttack()
         {
             if (monster.currentHp > 0)

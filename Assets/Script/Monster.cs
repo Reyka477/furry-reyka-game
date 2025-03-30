@@ -6,13 +6,11 @@ namespace Script
 {
     public class Monster : MonoBehaviour
     {
-        [Header("Основные параметры")]
-        public string monsterName;
+        [Header("Основные параметры")] public string monsterName;
         public int level = 1;
         public int experience = 10;
-    
-        [Header("Характеристики")]
-        public int maxHealth = 100;
+
+        [Header("Характеристики")] public int maxHealth = 100;
         public int currentHp;
         public int def = 5;
         public int attack = 2;
@@ -20,14 +18,14 @@ namespace Script
         public int critChance = 20;
         public float critDamage = 1.5f; //сила крита %
 
-        [Header("UI элементы")] 
-        public Dictionary<int, float> Drop = new Dictionary<int, float>()
+        [Header("UI элементы")] public Dictionary<int, float> Drop = new Dictionary<int, float>()
         {
             { 1, 0.5f },
             { 2, 0.9f },
             { 3, 0.2f },
             { 4, 0.9f }
         };
+
         public HealthBar healthBar;
         public AttackSpeedBar attackSpeedBar;
         public Image spriteRenderer; // Ссылка на спрайт монстра
@@ -38,14 +36,13 @@ namespace Script
             currentHp = maxHealth;
             attackSpeedBar.SetAttackSpeed(attackSpeed);
             healthBar.SetMaxHealth(maxHealth);
-            healthBar.SetMonsterName(monsterName);
             originalColor = spriteRenderer.color; // Сохраняем оригинальный цвет
         }
 
         public int DamageCalculation()
         {
             int damage = 0;
-        
+
             if (Random.Range(0, 100) < critChance)
             {
                 damage = Mathf.RoundToInt(attack * critDamage);
@@ -54,6 +51,7 @@ namespace Script
             {
                 damage = attack;
             }
+
             return damage;
         }
 
@@ -88,8 +86,10 @@ namespace Script
                     Debug.Log(item.Key);
                 }
             }
+
             return dropItems;
         }
+
         public List<int> Die()
         {
             // Переключаем полоску на режим "умер" чтоб обнулить её
@@ -99,7 +99,7 @@ namespace Script
             spriteRenderer.color = new Color(0.28f, 0.28f, 0.28f, 1f);
 
             return DropCalculation();
-        
+
             // Выдает экспу
         }
     }

@@ -30,8 +30,6 @@ public class ButtonManager : MonoBehaviour
     {
         Transform buttonParent = clickedButton.transform.parent; // Получаем родителя кнопки
 
-        Debug.Log($"Кликнута кнопка: {clickedButton.name}, родитель: {buttonParent.name}");
-
         if (buttonParent != null) // Проверяем, есть ли у кнопки родитель
         {
             if (buttonParent.name == "BiomesButtons") // Если кнопка из Biomes
@@ -58,10 +56,6 @@ public class ButtonManager : MonoBehaviour
                 activeMenuButton.GetComponent<Image>().color =
                     DarkenColor(originalColor); // Заменяем цвет на затемненный
             }
-        }
-        else
-        {
-            Debug.LogWarning($"Кнопка {clickedButton.name} не имеет родителя!");
         }
     }
 

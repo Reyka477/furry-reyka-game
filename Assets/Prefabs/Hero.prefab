@@ -487,7 +487,6 @@ MonoBehaviour:
   fillImage: {fileID: 5499806001671453481}
   healthText: {fileID: 7002495018327110580}
   maxHealth: 0
-  monsterName: {fileID: 0}
 --- !u!1 &7271316015930234150
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +538,7 @@ GameObject:
   - component: {fileID: 3089840277348472920}
   - component: {fileID: 501526976425034119}
   m_Layer: 5
-  m_Name: Hero_1
+  m_Name: Hero
   m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,17 +635,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f18949aaa7ea58459431b4f6539a24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Ne Leva
+  characterName: Neleva
   maxLevel: 100
   maxHealth: 100
-  currentHp: 0
+  currentHp: 100
   def: 5
   attack: 2
   attackSpeed: 1
   critChance: 20
   critDamage: 1.5
   attackDistance: 1
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 2318903228910982285}
   attackSpeedBar: {fileID: 8035831672262264760}
 --- !u!1 &8809621195085913920
 GameObject:

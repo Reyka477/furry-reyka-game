@@ -7,8 +7,7 @@ namespace Script
         [Header("Основные параметры")] public string characterName;
         public int maxLevel = 100;
 
-        [Header("Характеристики")] 
-        public int maxHealth = 100;
+        [Header("Характеристики")] public int maxHealth = 100;
         public int currentHp;
         public int def = 5;
         public int attack = 2;
@@ -19,7 +18,7 @@ namespace Script
 
         [Header("UI элементы")] public HealthBar healthBar;
         public AttackSpeedBar attackSpeedBar;
-
+        public BattleManager currentBattleArena;
 
         public void Awake()
         {

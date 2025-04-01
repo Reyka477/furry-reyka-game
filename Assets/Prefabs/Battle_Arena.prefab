@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 3504807569902112177}
   - component: {fileID: 6612314164514884909}
   - component: {fileID: 6602678250200044066}
+  - component: {fileID: 5650822574256465603}
   m_Layer: 5
   m_Name: slot_3
   m_TagString: Slot
@@ -375,6 +376,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 98.94968, y: 128.94778}
   m_EdgeRadius: 0
+--- !u!114 &5650822574256465603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010694041303434670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2533216c11cde61488a0b7423dd9df9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleArena: {fileID: 6747563265033364086}
 --- !u!1 &1378020136748583336
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +402,7 @@ GameObject:
   - component: {fileID: 2217797387613144432}
   - component: {fileID: 8680761987723718871}
   - component: {fileID: 2777554300780185679}
+  - component: {fileID: 6736956759078128311}
   m_Layer: 5
   m_Name: slot_4
   m_TagString: Slot
@@ -541,6 +556,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 98.69458, y: 129.12544}
   m_EdgeRadius: 0
+--- !u!114 &6736956759078128311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378020136748583336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2533216c11cde61488a0b7423dd9df9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleArena: {fileID: 6747563265033364086}
 --- !u!1 &1731342713969595929
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +929,7 @@ GameObject:
   - component: {fileID: 8522936945086638875}
   - component: {fileID: 6747563265033364086}
   m_Layer: 5
-  m_Name: Battle_Arena_1
+  m_Name: Battle_Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,8 +970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a592ed3172952ce4a86c71ea98eacb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero: {fileID: 0}
   monster: {fileID: 5952261853258397798}
+  heroes: []
 --- !u!1 &3200953432890172822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1709,7 @@ GameObject:
   - component: {fileID: 325392187256358126}
   - component: {fileID: 7325786767408803319}
   - component: {fileID: 8627725065472098577}
+  - component: {fileID: 4431547031934128000}
   m_Layer: 5
   m_Name: slot_1
   m_TagString: Slot
@@ -1834,6 +1863,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 98.23275, y: 129.44034}
   m_EdgeRadius: 0
+--- !u!114 &4431547031934128000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153371534174866403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2533216c11cde61488a0b7423dd9df9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleArena: {fileID: 6747563265033364086}
 --- !u!1 &7678932311686895802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1927,7 @@ GameObject:
   - component: {fileID: 4175314180752766115}
   - component: {fileID: 3157903532104555060}
   - component: {fileID: 5647469848052329699}
+  - component: {fileID: 4625188223795439885}
   m_Layer: 5
   m_Name: slot_2
   m_TagString: Slot
@@ -2038,3 +2081,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 98.94968, y: 128.94778}
   m_EdgeRadius: 0
+--- !u!114 &4625188223795439885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452250842095788304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2533216c11cde61488a0b7423dd9df9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleArena: {fileID: 6747563265033364086}

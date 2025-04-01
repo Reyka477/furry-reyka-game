@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Slot
+  - Hero
+  - HeroSlot1
+  - HeroSlot2
+  - HeroSlot3
+  - HeroSlot4
   layers:
   - Default
   - TransparentFX

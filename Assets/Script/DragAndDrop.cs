@@ -1,52 +1,79 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Script;
 
-public class DragAndDrop : MonoBehaviour
+public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    private bool isDragging = false; // Флаг, указывающий, что объект перетаскивается
-    private Vector2 offset; // На сколько клик по объекту смещен от левого верхнего края
+    private RectTransform rectTransform;
+    private Canvas canvas;
+    private CanvasGroup canvasGroup;
     private Vector2 startPosition;
+    private Transform originalParent;
 
-    void OnMouseDown()
+    private void Awake()
     {
-        startPosition = transform.position;
-        // Когда нажимаем на объект, начинаем перетаскивание
-        isDragging = true;
-        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        rectTransform = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+        canvasGroup = gameObject.AddComponent<CanvasGroup>();
     }
 
-    void OnMouseDrag()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if (isDragging)
+        startPosition = rectTransform.anchoredPosition;
+        originalParent = rectTransform.parent;
+
+        canvasGroup.alpha = 0.7f;
+        canvasGroup.blocksRaycasts = false;
+
+        // Если начался перетаскивание героя, останавливаем текущий бой на его арене
+        Character character = GetComponent<Character>();
+        if (character.currentBattleArena != null)
         {
-            // Перемещаем объект вместе с курсором мыши
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position =
-                new Vector2(mousePosition.x + offset.x, mousePosition.y + offset.y);
+            character.currentBattleArena.StopBattle();
         }
     }
 
-    void OnMouseUp()
+    public void OnDrag(PointerEventData eventData)
     {
-        isDragging = false;
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+    }
 
-        // Получаем ВСЕ коллайдеры в точке, куда отпущен персонаж
-        Collider2D[] colliders = Physics2D.OverlapPointAll(transform.position);
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
 
-        foreach (Collider2D collider in colliders)
+        bool slotFound = false;
+
+        foreach (var hoveredObject in eventData.hovered)
         {
-            if (collider.CompareTag("Slot"))
+            if (hoveredObject.CompareTag("Slot"))
             {
-                // Делаем слот новым родителем
-                transform.SetParent(collider.transform);
+                rectTransform.SetParent(hoveredObject.transform, false);
+                rectTransform.anchoredPosition = Vector2.zero;
 
-                // Перемещаем в центр слота
-                transform.position = collider.transform.position;
+                SlotArena slotArena = hoveredObject.GetComponent<SlotArena>();
+                if (slotArena != null)
+                {
+                    Character character = GetComponent<Character>();
 
-                return;
+                    if (character.currentBattleArena != null && character.currentBattleArena != slotArena.battleArena)
+                    {
+                        character.currentBattleArena.heroes.Remove(character);
+                    }
+
+                    character.currentBattleArena = slotArena.battleArena;
+                }
+
+                slotFound = true;
+                break;
             }
         }
 
-        // Если слот не найден — возвращаем назад
-        transform.position = startPosition;
+        if (!slotFound)
+        {
+            rectTransform.SetParent(originalParent, false);
+            rectTransform.anchoredPosition = startPosition;
+        }
     }
 }

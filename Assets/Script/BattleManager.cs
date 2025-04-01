@@ -1,97 +1,132 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Script
 {
     public class BattleManager : MonoBehaviour
     {
-        public Character hero; // Ссылка на героя
-        public Monster monster; // Ссылка на монстра
+        public Monster monster;
+        public List<Character> heroes = new List<Character>();
+
+        private bool battleIsActive = false;
+
+        public bool IsBattleActive => battleIsActive;
 
         public void StartBattle()
         {
-            // Подписываемся на события атаки персонажа и монстра
-            hero.attackSpeedBar.onAttack = HeroAttack;
+            FindHeroesInSlots();
+
+            if (heroes.Count == 0)
+            {
+                Debug.LogError("Нет героев для начала боя!");
+                return;
+            }
+
+            battleIsActive = true;
+
+            foreach (var hero in heroes)
+            {
+                hero.attackSpeedBar.onAttack = () => HeroAttack(hero);
+                hero.attackSpeedBar.isFighting = true;
+            }
+
             monster.attackSpeedBar.onAttack = MonsterAttack;
-            // Запускаем AttackSpeedBar
-            hero.attackSpeedBar.isFighting = true;
             monster.attackSpeedBar.isFighting = true;
         }
 
         public void StopBattle()
         {
-            hero.attackSpeedBar.isFighting = false;
+            battleIsActive = false;
+
+            foreach (var hero in heroes)
+            {
+                hero.attackSpeedBar.isFighting = false;
+            }
+
             monster.attackSpeedBar.isFighting = false;
         }
 
-        public void FindHeroInSlots()
+        public void FindHeroesInSlots()
         {
-            // Находим все объекты с тегом "Slot"
-            GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
+            heroes.Clear();
 
-            foreach (GameObject slot in slots)
+            foreach (SlotArena slot in GetComponentsInChildren<SlotArena>())
             {
-                // Проверяем, есть ли у слота дочерние объекты
                 foreach (Transform child in slot.transform)
                 {
-                    // Проверяем, есть ли у дочернего объекта тег "Hero"
                     if (child.CompareTag("Hero"))
                     {
-                        hero = child.GetComponent<Character>();
-                        Debug.Log("Герой найден и установлен: " + hero.name);
-                        return;
+                        Character hero = child.GetComponent<Character>();
+                        if (hero != null)
+                        {
+                            heroes.Add(hero);
+                            Debug.Log($"Герой {hero.name} добавлен на арену {name}");
+                        }
                     }
                 }
             }
-
-            Debug.LogWarning("Герой в слотах не найден!");
         }
 
-        private void HeroAttack()
+        private void HeroAttack(Character hero)
         {
+            if (!battleIsActive) return;
+
             if (monster.currentHp > 0)
             {
                 monster.GetDamage(hero.DamageCalculation());
             }
 
-            // Проверяем, умер ли монстр
             if (monster.currentHp <= 0)
             {
-                StopBattle();
                 monster.Die();
+                StopBattle();
                 StartCoroutine(MonsterRespawn());
             }
         }
 
         private void MonsterAttack()
         {
-            if (hero.currentHp > 0)
+            if (!battleIsActive) return;
+
+            foreach (var hero in heroes)
             {
-                hero.GetDamage(monster.DamageCalculation());
+                if (hero.currentHp > 0)
+                {
+                    hero.GetDamage(monster.DamageCalculation());
+                    if (hero.currentHp <= 0)
+                    {
+                        hero.Die();
+                        CheckAllHeroesDead();
+                    }
+                    return;
+                }
             }
 
-            // Проверяем, умер ли герой
-            if (hero.currentHp <= 0)
-            {
-                hero.Die();
-            }
+            CheckAllHeroesDead();
         }
 
-        public IEnumerator MonsterRespawn()
+        private void CheckAllHeroesDead()
         {
-            // Ждем 3 секунды
+            foreach (var hero in heroes)
+            {
+                if (hero.currentHp > 0)
+                {
+                    return;
+                }
+            }
+
+            Debug.Log("Все герои погибли!");
+            StopBattle();
+        }
+
+        private IEnumerator MonsterRespawn()
+        {
             yield return new WaitForSeconds(3f);
-
-            // Возвращаем спрайт в нормальное состояние
-            monster.spriteRenderer.color = monster.originalColor;
-
-            // Восстанавливаем здоровье и обновляем UI
             monster.currentHp = monster.maxHealth;
             monster.healthBar.SetHealth(monster.currentHp);
             monster.attackSpeedBar.isAlive = true;
-
-            // Начинаем бой заново
-            StartBattle();
+            monster.spriteRenderer.color = monster.originalColor;
         }
     }
 }

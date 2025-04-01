@@ -8,26 +8,27 @@ namespace Script
     {
         public Button battleButton;
         public TMP_Text buttonText;
-        private bool _isStarted = false;
         public Sprite startSprite;
         public Sprite stopSprite;
         public Image buttonImage;
         public BattleManager battleManager;
 
+        private bool _isStarted = false;
 
-        public void Start()
+        void Start()
         {
-            // Навешиваем функцию при клике на battleButton
             battleButton.onClick.AddListener(ToggleButton);
         }
 
         void ToggleButton()
         {
             _isStarted = !_isStarted;
-            battleManager.FindHeroInSlots();
-            if (battleManager.hero != null)
+
+            if (_isStarted)
             {
-                if (_isStarted)
+                battleManager.FindHeroesInSlots(); // ищем всех героев
+
+                if (battleManager.heroes.Count > 0)
                 {
                     buttonText.text = "Stop";
                     buttonImage.sprite = stopSprite;
@@ -35,10 +36,15 @@ namespace Script
                 }
                 else
                 {
-                    buttonText.text = "Start";
-                    buttonImage.sprite = startSprite;
-                    battleManager.StopBattle();
+                    Debug.LogWarning("Нет героев в слотах. Бой не начат.");
+                    _isStarted = false; // сбрасываем флаг
                 }
+            }
+            else
+            {
+                buttonText.text = "Start";
+                buttonImage.sprite = startSprite;
+                battleManager.StopBattle();
             }
         }
     }

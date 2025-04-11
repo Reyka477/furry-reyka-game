@@ -58,4 +58,22 @@ public class PlayerProgress : MonoBehaviour
             levelText.text = $"Level {playerLevel}";
         }
     }
+
+    public GameSaveData GetSaveData()
+    {
+        return new GameSaveData
+        {
+            playerLevel = playerLevel,
+            currentExp = currentExp,
+            expToNextLevel = expToNextLevel
+        };
+    }
+
+    public void LoadFromSave(GameSaveData data)
+    {
+        playerLevel = data.playerLevel;
+        currentExp = data.currentExp;
+        expToNextLevel = data.expToNextLevel;
+        UpdateUI();
+    }
 }

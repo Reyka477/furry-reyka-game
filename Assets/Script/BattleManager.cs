@@ -120,13 +120,19 @@ namespace Script
             StopBattle();
         }
 
-        private IEnumerator MonsterRespawn()
+        public IEnumerator MonsterRespawn()
         {
             yield return new WaitForSeconds(3f);
+
+            monster.spriteRenderer.color = monster.originalColor;
             monster.currentHp = monster.maxHealth;
             monster.healthBar.SetHealth(monster.currentHp);
             monster.attackSpeedBar.isAlive = true;
-            monster.spriteRenderer.color = monster.originalColor;
+
+            // ⬇️ добавь перед StartBattle()
+            FindHeroesInSlots();
+
+            StartBattle();
         }
     }
 }

@@ -101,6 +101,16 @@ namespace Script
             return DropCalculation();
 
             // Выдает экспу
+            if (PlayerProgress.Instance != null)
+            {
+                PlayerProgress.Instance.AddExperience(experience);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerProgress.Instance = null");
+            }
+
+            Debug.Log("Монстр умер, опыт должен быть начислен.");
         }
     }
 }

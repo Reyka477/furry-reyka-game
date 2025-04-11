@@ -128,8 +128,7 @@ namespace Script
             monster.currentHp = monster.maxHealth;
             monster.healthBar.SetHealth(monster.currentHp);
             monster.attackSpeedBar.isAlive = true;
-
-            // ⬇️ добавь перед StartBattle()
+            
             FindHeroesInSlots();
 
             StartBattle();

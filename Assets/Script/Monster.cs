@@ -98,8 +98,6 @@ namespace Script
             // Делаем спрайт серым
             spriteRenderer.color = new Color(0.28f, 0.28f, 0.28f, 1f);
 
-            return DropCalculation();
-
             // Выдает экспу
             if (PlayerProgress.Instance != null)
             {
@@ -111,6 +109,8 @@ namespace Script
             }
 
             Debug.Log("Монстр умер, опыт должен быть начислен.");
+            
+            return DropCalculation();
         }
     }
 }
